@@ -13,6 +13,7 @@
               <th>Nama Dusun</th>
               <th>Kepala Dusun</th>
               <th width="30">Aksi</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
