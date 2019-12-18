@@ -8,14 +8,15 @@ class Dashboard extends MX_Controller
         parent::__construct();
 		$this->load->model('ServiceModel');
 		$this->ServiceModel->logged_id();
+		$this->load->model('DashboardModel');
 	}
 	
 	public function index()
 	{
+		$data['rekap'] = $this->DashboardModel->get_rekap();
 		$this->load->view('admin_template/header');
 		$this->load->view('admin_template/sidebar');
-		$this->load->view('dashboard_view');
+		$this->load->view('dashboard_view', $data);
 		$this->load->view('admin_template/footer');
-
 	}
 }

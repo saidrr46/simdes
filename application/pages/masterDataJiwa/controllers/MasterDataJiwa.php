@@ -13,7 +13,6 @@ class MasterDataJiwa extends MX_Controller
 	
 	public function index()
 	{
-
 		$this->load->view('admin_template/header');
 		$this->load->view('admin_template/sidebar');
 		$this->load->view('master_data_jiwa_view');

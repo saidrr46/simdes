@@ -14,7 +14,7 @@
           <img src="<?= base_url() ?>assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Administrator</a>
         </div>
       </div>
 
@@ -52,12 +52,12 @@
                   <p>Dusun</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?= site_url('masterrw')?>" class="nav-link <?php if ($this->uri->uri_string() === 'masterrw') echo 'active';?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>RT - RW</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item">

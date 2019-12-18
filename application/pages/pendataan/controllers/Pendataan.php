@@ -119,7 +119,7 @@ class Pendataan extends MX_Controller
 	}
 
 	public function delete_data(){
-		$data = $this->PendataanModel->delete_data($par = $this->input->post('id'));
+		$data = $this->PendataanModel->delete_data($this->input->post('id'));
 		echo json_encode($data);		
 	}
 }

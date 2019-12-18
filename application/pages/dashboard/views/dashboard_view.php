@@ -5,8 +5,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>14</h3>
-
+                <h3><?= $rekap['jumlah_dukuh'];?></h3>
                 <p>Dusun</p>
               </div>
               <div class="icon">
@@ -19,7 +18,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53</h3>
+                <h3><?= $rekap['jumlah_rw'];?></h3>
 
                 <p>Rukun Warga</p>
               </div>
@@ -33,9 +32,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>144</h3>
+                <h3><?= $rekap['jumlah_kk'];?></h3>
 
-                <p>Rukun Tetangga</p>
+                <p>Rumah Tangga</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -47,9 +46,9 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>5065</h3>
+                <h3><?= $rekap['jumlah_penduduk'];?></h3>
 
-                <p>Penduduk</p>
+                <p>Penduduk Tercatat</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

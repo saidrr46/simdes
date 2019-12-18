@@ -84,7 +84,7 @@ class PendataanModel extends CI_Model {
 	}
 
 	public function delete_data($id){
-		$where = array('id_dukuh' => $id);
+		$where = array('id_penduduk' => $id);
 		$q = $this->db->delete($this->tb_keluarga, $where);			
 		return $q;
     }
