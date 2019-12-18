@@ -128,7 +128,7 @@
         <div class="modal-body">
           <div class="form-group">
             <label>NIK</label>
-            <input name="id_keluarga" type="hidden" class="form-control id_keluarga">
+            <input id="id_keluarga2" name="id_keluarga" type="hidden" class="form-control id_keluarga">
             <input id="id_penduduk" name="id_penduduk" type="hidden" class="form-control">
             <input id="nik" name="nik" type="text" class="form-control">
           </div>
@@ -138,7 +138,7 @@
           </div>
           <div class="form-group">
             <label>Agama</label>
-            <select id="select_agama" class="custom-select" name="id_agama">
+            <select id="id_agama" class="custom-select" name="id_agama">
               <?php foreach ($agama as $key => $row) {
                 echo '<option value="' . $row->id_agama . '">' . $row->agama . '</option>';
               } ?>
@@ -146,14 +146,14 @@
           </div>
           <div class="form-group">
             <label>Jenis Kelamin</label>
-            <select id="select_jk" class="custom-select" name="id_jenis_kelamin">
+            <select id="id_jenis_kelamin" class="custom-select" name="id_jenis_kelamin">
               <option value="1">Laki Laki</option>
               <option value="2">Perempuan</option>
             </select>
           </div>
           <div class="form-group">
             <label>Pekerjaan</label>
-            <select id="select_pekerjaan" class="custom-select" name="id_pekerjaan">
+            <select id="id_pekerjaan" class="custom-select" name="id_pekerjaan">
               <?php foreach ($pekerjaan as $key => $row) {
                 echo '<option value="' . $row->id_pekerjaan . '">' . $row->pekerjaan . '</option>';
               } ?>
@@ -161,7 +161,7 @@
           </div>
           <div class="form-group">
             <label>Pendidikan</label>
-            <select id="select_pendidikan" class="custom-select" name="id_pendidikan">
+            <select id="id_pendidikan" class="custom-select" name="id_pendidikan">
               <?php foreach ($pendidikan as $key => $row) {
                 echo '<option value="' . $row->id_pendidikan . '">' . $row->pendidikan . '</option>';
               } ?>
@@ -169,7 +169,7 @@
           </div>
           <div class="form-group">
             <label>Status Dalam Keluarga</label>
-            <select id="select_status" class="custom-select" name="id_status_keluarga">
+            <select id="id_status_keluarga" class="custom-select" name="id_status_keluarga">
               <?php foreach ($status as $key => $row) {
                 echo '<option value="' . $row->id_status_keluarga . '">' . $row->status_keluarga . '</option>';
               } ?>
@@ -200,9 +200,6 @@
     }
 
     $('#add_button').click(function() {
-      $('#action').val('insert');
-      $('#id_dukuh').val('');
-      $('#dukuh').val('');
       $('.modal-title').text('Add Data');
       $('#pendudukModal').modal('show');
     });
@@ -218,9 +215,15 @@
         url: '<?= base_url("pendataan/select_data") ?>',
         dataType: 'json',
         success: function(response) {
-          $('#action').val('edit');
-          $('#id_dukuh').val(response[0].id_dukuh);
-          $('#dukuh').val(response[0].dukuh);
+          $('#id_penduduk').val(response[0].id_penduduk);
+          $('#nik').val(response[0].nik);
+          $('#nama_penduduk').val(response[0].nama_penduduk);
+          $('#id_agama').val(response[0].id_agama);
+          $('#id_jenis_kelamin').val(response[0].id_jenis_kelamin);
+          $('#id_pekerjaan').val(response[0].id_pekerjaan);
+          $('#id_pendidikan').val(response[0].id_pendidikan);
+          $('#id_keluarga2').val(response[0].id_keluarga);
+          $('#id_status_keluarga').val(response[0].id_status_keluarga);
           $('.modal-title').text('Edit Data');
           $('#pendudukModal').modal('show');
         }
@@ -259,7 +262,7 @@
           success: function(data) {
             if (data.id_keluarga) {
               $('.id_keluarga').val(data.id_keluarga);
-              $('#profile-tab').removeClass('disabled');
+              $('#profile-tab').removeClass('disabled').tab('show');
               fetch_data();
             }
           }

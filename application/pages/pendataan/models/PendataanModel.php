@@ -49,11 +49,10 @@ class PendataanModel extends CI_Model {
         }
     }
     
-    function get_dusun_by_id($id) {
-        $query = $this->db->select('a.id_dukuh, a.dukuh, a.id_kepala_dukuh, b.nama_penduduk')
-        ->from('m_dukuh a')
-        ->join('ta_penduduk b', 'a.id_kepala_dukuh = b.id_penduduk','left')
-        ->where(array('a.id_dukuh' => $id))
+    function get_penduduk_by_id($id) {
+        $query = $this->db->select('*')
+        ->from('ta_penduduk a')
+        ->where(array('a.id_penduduk' => $id))
         ->get();
         if ($query->num_rows() == 0) {
             return FALSE;

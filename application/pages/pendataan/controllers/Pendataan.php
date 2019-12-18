@@ -64,7 +64,7 @@ class Pendataan extends MX_Controller
 	}
 
 	public function select_data(){
-		$data = $this->PendataanModel->get_dusun_by_id($this->input->post('id'));
+		$data = $this->PendataanModel->get_penduduk_by_id($this->input->post('id'));
 		echo json_encode($data);		
 	}
 
