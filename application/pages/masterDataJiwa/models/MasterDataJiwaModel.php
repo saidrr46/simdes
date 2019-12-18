@@ -46,14 +46,16 @@ class MasterDataJiwaModel extends CI_Model {
         ->join('m_pendidikan e', 'a.id_pendidikan = e.id_pendidikan','left')
         ->join('m_jenis_kelamin f', 'a.id_jenis_kelamin = f.id_jenis_kelamin','left')
         ->join('ta_keluarga g', 'a.id_keluarga = g.id_keluarga','left')
+        ->join('m_dukuh h', 'g.id_dukuh = h.id_dukuh','left')
         ->get();
         if ($query->num_rows() == 0) {
-            return FALSE;
+            $return->data = array();
+            $return->total = 0;
         } else {
             $return->data = $query->result();
             $return->total = $query->num_rows();
-            return $return ;
         }
+        return $return ;
     }
     
 
