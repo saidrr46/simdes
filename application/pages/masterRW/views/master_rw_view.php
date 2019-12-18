@@ -19,7 +19,7 @@
   <div class="col-6">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Daftar RW di <span id="#nama_dusun"></span></h4>
+        <h4 class="card-title">Daftar RW di Dusun <span id="nama_dusun"></span></h4>
         <button id="add_button" class="btn btn-primary btn-sm float-right">Tambah Data</button>
       </div>
       <div class="card-body">

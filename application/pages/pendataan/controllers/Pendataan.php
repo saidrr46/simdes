@@ -26,7 +26,7 @@ class Pendataan extends MX_Controller
 	}
 
 	public function get_data() {
-		$data = $this->PendataanModel->get_data_penduduk();
+		$data = $this->PendataanModel->get_data_penduduk($this->input->get('id'));
 		$output = '';
 		if(is_array($data) && count($data) > 0)
 		{
@@ -68,30 +68,49 @@ class Pendataan extends MX_Controller
 		echo json_encode($data);		
 	}
 
-	public function update_data (){
+	public function update_data(){
 		$par = $this->input->post();
-		$data = array(
-			'id_desa' => 1,
-			'dukuh' => $par['dukuh'],
-		);
-		if($par['action'] === 'edit') {
-			$id = $par['id_dukuh'];
-			$q = $this->PendataanModel->edit_data($id, $data);
+		if(isset($par['id_keluarga']) && $par['id_keluarga']) {
+			$q = $this->PendataanModel->edit_data($par['id_keluarga'], $par);
 			if ($q) {
-				$resp = array('status' => 'sukses');
+				$resp = array('success' => true, 'msg' => 'Berhasil Menyimpan');
 				echo json_encode($resp);
 			}else{
 				$resp = array('status' => 'gagal');
 				echo json_encode($resp);
 			}
 		} else {
-
-			if ($data) {
-				$q =  $this->PendataanModel->add_data($data);
+			if ($par) {
+				$q =  $this->PendataanModel->add_data($par);
 				if ($q) {
-					$resp = array('status' => 'sukses');
+					$resp = array('success' => true, 'msg' => 'Berhasil Menyimpan', 'id_keluarga' => $q);
 					echo json_encode($resp);
-				} else {
+				}else{
+					$resp = array('status' => 'gagal');
+					echo json_encode($resp);
+				}
+			}
+		}
+	}
+
+	public function update_data_penduduk(){
+		$par = $this->input->post();
+		if(isset($par['id_penduduk']) && $par['id_penduduk']) {
+			$q = $this->PendataanModel->edit_data_penduduk($par['id_penduduk'], $par);
+			if ($q) {
+				$resp = array('success' => true, 'msg' => 'Berhasil Menyimpan');
+				echo json_encode($resp);
+			}else{
+				$resp = array('status' => 'gagal');
+				echo json_encode($resp);
+			}
+		} else {
+			if ($par) {
+				$q =  $this->PendataanModel->add_data_penduduk($par);
+				if ($q) {
+					$resp = array('success' => true, 'msg' => 'Berhasil Menyimpan');
+					echo json_encode($resp);
+				}else{
 					$resp = array('status' => 'gagal');
 					echo json_encode($resp);
 				}

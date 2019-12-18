@@ -10,25 +10,24 @@
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Data KK</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Data Anggota Keluarga</a>
+            <a class="nav-link disabled" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Data Anggota Keluarga</a>
           </li>
         </ul>
         <div class="tab-content pt-3" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <form method="post" id="dusun_form">
+            <form method="post" id="keluarga_form">
               <div class="border p-3 mb-3">
                 <div class="form-group row">
                   <label class="col-2">No. Kartu Keluarga</label>
                   <div class="col-10">
-                    <input id="id_dukuh" name="id_dukuh" type="hidden" class="form-control">
-                    <input id="dukuh" name="dukuh" type="text" class="form-control">
+                    <input id="id_keluarga" name="id_keluarga" type="hidden" class="form-control id_keluarga">
+                    <input id="nomor_kk" name="nomor_kk" type="text" class="form-control">
                   </div>
                 </div>
                 <div class="form-group row mb-0">
                   <label class="col-2">Nama Kepala Keluarga</label>
                   <div class="col-10">
-                    <input id="id_dukuh" name="id_dukuh" type="hidden" class="form-control">
-                    <input id="dukuh" name="dukuh" type="text" class="form-control">
+                    <input id="nama_kepala" name="nama_kepala" type="text" class="form-control">
                   </div>
                 </div>
               </div>
@@ -47,11 +46,11 @@
                 <div class="form-group row">
                   <label class="col-2">Desa</label>
                   <div class="col-4">
-                    <input id="desa" name="dukuh" type="text" class="form-control" value="<?= APP_REGION; ?>" disabled>
+                    <input id="desa" name="desa" type="text" class="form-control" value="<?= APP_REGION; ?>" disabled>
                   </div>
                   <label class="col-2">Dukuh</label>
                   <div class="col-4">
-                    <select id="select_agama" class="custom-select">
+                    <select id="select_desa" class="custom-select" name="id_dukuh">
                       <?php foreach ($dusun as $key => $row) {
                         echo '<option value="' . $row->id_dukuh . '">' . $row->dukuh . '</option>';
                       } ?>
@@ -61,34 +60,26 @@
                 <div class="form-group row">
                   <label class="col-2">RW</label>
                   <div class="col-4">
-                    <select id="select_jk" class="custom-select">
-                      <option>1</option>
-                      <option>2</option>
-                    </select>
+                    <input id="rw" name="rw" type="text" class="form-control">
                   </div>
                   <label class="col-2">RT</label>
                   <div class="col-4">
-                    <select id="select_jk" class="custom-select">
-                      <option>1</option>
-                      <option>2</option>
-                    </select>
+                    <input id="rt" name="rt" type="text" class="form-control">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-2">Alamat</label>
                   <div class="col-10">
-                    <input id="alamat" name="alamat" type="text" class="form-control">
+                    <textarea id="alamat" name="alamat" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group row mb-0">
                   <label class="col-2">Keterangan</label>
                   <div class="col-10">
-                    <input id="keterangan" name="keterangan" type="text" class="form-control">
+                    <textarea id="keterangan" name="keterangan" class="form-control"></textarea>
                   </div>
                 </div>
               </div>
-
-
               <div class="modal-footer">
                 <input type="submit" name="button_action" id="button_action" class="btn btn-info" value="Simpan" />
               </div>
@@ -133,21 +124,21 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" id="dusun_form">
+      <form method="post" id="penduduk_form">
         <div class="modal-body">
           <div class="form-group">
             <label>NIK</label>
-            <input id="id_dukuh" name="id_dukuh" type="hidden" class="form-control">
-            <input id="dukuh" name="dukuh" type="text" class="form-control">
+            <input name="id_keluarga" type="hidden" class="form-control id_keluarga">
+            <input id="id_penduduk" name="id_penduduk" type="hidden" class="form-control">
+            <input id="nik" name="nik" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Nama Penduduk</label>
-            <input id="id_dukuh" name="id_dukuh" type="hidden" class="form-control">
-            <input id="dukuh" name="dukuh" type="text" class="form-control">
+            <input id="nama_penduduk" name="nama_penduduk" type="text" class="form-control">
           </div>
           <div class="form-group">
             <label>Agama</label>
-            <select id="select_agama" class="custom-select">
+            <select id="select_agama" class="custom-select" name="id_agama">
               <?php foreach ($agama as $key => $row) {
                 echo '<option value="' . $row->id_agama . '">' . $row->agama . '</option>';
               } ?>
@@ -155,14 +146,14 @@
           </div>
           <div class="form-group">
             <label>Jenis Kelamin</label>
-            <select id="select_jk" class="custom-select">
+            <select id="select_jk" class="custom-select" name="id_jenis_kelamin">
               <option value="1">Laki Laki</option>
               <option value="2">Perempuan</option>
             </select>
           </div>
           <div class="form-group">
             <label>Pekerjaan</label>
-            <select id="select_pekerjaan" class="custom-select">
+            <select id="select_pekerjaan" class="custom-select" name="id_pekerjaan">
               <?php foreach ($pekerjaan as $key => $row) {
                 echo '<option value="' . $row->id_pekerjaan . '">' . $row->pekerjaan . '</option>';
               } ?>
@@ -170,7 +161,7 @@
           </div>
           <div class="form-group">
             <label>Pendidikan</label>
-            <select id="select_pendidikan" class="custom-select">
+            <select id="select_pendidikan" class="custom-select" name="id_pendidikan">
               <?php foreach ($pendidikan as $key => $row) {
                 echo '<option value="' . $row->id_pendidikan . '">' . $row->pendidikan . '</option>';
               } ?>
@@ -178,7 +169,7 @@
           </div>
           <div class="form-group">
             <label>Status Dalam Keluarga</label>
-            <select id="select_status" class="custom-select">
+            <select id="select_status" class="custom-select" name="id_status_keluarga">
               <?php foreach ($status as $key => $row) {
                 echo '<option value="' . $row->id_status_keluarga . '">' . $row->status_keluarga . '</option>';
               } ?>
@@ -187,8 +178,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <input type="hidden" name="action" id="action" value="insert" />
-          <input type="submit" name="button_action" id="button_action" class="btn btn-info" value="Simpan" />
+          <input type="submit" name="button_action" id="button_action_penduduk" class="btn btn-info" value="Simpan" />
         </div>
       </form>
     </div>
@@ -196,11 +186,13 @@
 </div>
 <script type="text/javascript">
   $(function() {
-    fetch_data();
 
     function fetch_data() {
       $.ajax({
         url: "<?= base_url("pendataan/get_data") ?>",
+        data: {
+          id: $('#id_keluarga').val()
+        },
         success: function(data) {
           $('tbody').html(data);
         }
@@ -253,20 +245,42 @@
       }
     });
 
-    $('#dusun_form').on('submit', function(event) {
+    $('#keluarga_form').on('submit', function(event) {
       event.preventDefault();
-      if ($('#dukuh').val() == '') {
-        alert("Nama Dukuh Harus Diisi");
+      if ($('#nama_kepala').val() == '' || $('#nomor_kk').val() == '' ) {
+        alert("Nomor KK dan Nama Harus Diisi");
       } else {
         var form_data = $(this).serialize();
         $.ajax({
           url: "<?= base_url("pendataan/update_data") ?>",
           method: "POST",
           data: form_data,
+          dataType: 'JSON',
           success: function(data) {
-            fetch_data();
-            $('#dusun_form')[0].reset();
-            $('#pendudukModal').modal('hide');
+            if (data.id_keluarga) {
+              $('.id_keluarga').val(data.id_keluarga);
+              $('#profile-tab').removeClass('disabled');
+              fetch_data();
+            }
+          }
+        });
+      }
+    });
+    $('#penduduk_form').on('submit', function(event) {
+      event.preventDefault();
+      if ($('#nama_penduduk').val() == '' || $('#nik').val() == '' ) {
+        alert("NIK dan Nama Harus Diisi");
+      } else {
+        var form_data = $(this).serialize();
+        $.ajax({
+          url: "<?= base_url("pendataan/update_data_penduduk") ?>",
+          method: "POST",
+          data: form_data,
+          dataType: 'JSON',
+          success: function(data) {
+              $('#penduduk_form')[0].reset();
+              $('#pendudukModal').modal('hide');
+              fetch_data();
           }
         });
       }

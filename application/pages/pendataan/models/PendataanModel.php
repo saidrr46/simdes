@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PendataanModel extends CI_Model {
 
-	protected $tb_dukuh = 'm_dukuh';
+	protected $tb_keluarga = 'ta_keluarga';
+    protected $tb_penduduk = 'ta_penduduk';
 
 	public function __construct(){
 		parent::__construct();
@@ -19,7 +20,7 @@ class PendataanModel extends CI_Model {
         return $this->session->userdata('user');
     }
 
-	function get_data_penduduk() {
+	function get_data_penduduk($id_keluarga = false) {
         $query = $this->db->select('*')
         ->from('ta_penduduk a')
         ->join('m_status_keluarga b', 'a.id_status_keluarga = b.id_status_keluarga','left')
@@ -27,6 +28,7 @@ class PendataanModel extends CI_Model {
         ->join('m_pekerjaan d', 'a.id_pekerjaan = d.id_pekerjaan','left')
         ->join('m_pendidikan e', 'a.id_pendidikan = e.id_pendidikan','left')
         ->join('m_jenis_kelamin f', 'a.id_jenis_kelamin = f.id_jenis_kelamin','left')
+        ->where(array('a.id_keluarga' => $id_keluarga))
         ->get();
         if ($query->num_rows() == 0) {
             return FALSE;
@@ -61,18 +63,30 @@ class PendataanModel extends CI_Model {
     }
 
 	public function add_data($data){
-		$q = $this->db->insert($this->tb_dukuh, $data);
-		return $q;
+        $q = $this->db->insert($this->tb_keluarga, $data);
+        if($q) {
+            return $this->db->insert_id();
+        }
 	}
 
 	public function edit_data($id, $data){
-		$q = $this->db->where('id_dukuh', $id)->update($this->tb_dukuh, $data);
+		$q = $this->db->where('id_keluarga', $id)->update($this->tb_keluarga, $data);
+		return $q;
+    }
+    
+    public function add_data_penduduk($data){
+        $q = $this->db->insert($this->tb_penduduk, $data);
+        return $q;
+	}
+
+	public function edit_data_penduduk($id, $data){
+		$q = $this->db->where('id_penduduk', $id)->update($this->tb_penduduk, $data);
 		return $q;
 	}
 
 	public function delete_data($id){
 		$where = array('id_dukuh' => $id);
-		$q = $this->db->delete($this->tb_dukuh, $where);			
+		$q = $this->db->delete($this->tb_keluarga, $where);			
 		return $q;
     }
     

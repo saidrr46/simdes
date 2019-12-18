@@ -24,6 +24,9 @@
   <link rel="stylesheet" href="<?= base_url()?>assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url()?>assets/plugins/summernote/summernote-bs4.css">
+  <!-- select2 -->  
+  <link rel="stylesheet" href="<?= base_url()?>assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?= base_url()?>assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
@@ -53,6 +56,8 @@
   <script src="<?= base_url() ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!-- Summernote -->
   <script src="<?= base_url() ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- Select2 -->
+  <script src="<?= base_url() ?>assets/plugins/select2/select2.min.js"></script>
   <!-- overlayScrollbars -->
   <script src="<?= base_url() ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
