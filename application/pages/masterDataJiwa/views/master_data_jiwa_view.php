@@ -2,18 +2,82 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Daftar Dusun di <?= APP_REGION; ?></h4>
-        <button id="add_button" class="btn btn-primary btn-sm float-right">Tambah Data</button>
+        <h4 class="card-title">Daftar Jiwa di <?= APP_REGION; ?></h4>
       </div>
+
+              <div class="border p-3 bg-light">
+                <div class="form-group row">
+                  <label class="col-2">Provinsi</label>
+                  <div class="col-4">
+                    <input id="desa" name="propinsi" type="text" class="form-control" value="<?= APP_STATE; ?>" disabled>
+                  </div>
+                  <label class="col-2">Kabupaten</label>
+                  <div class="col-4">
+                    <input id="desa" name="kabupaten" type="text" class="form-control" value="<?= APP_CITY; ?>" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-2">Kecamatan</label>
+                  <div class="col-4">
+                    <input id="desa" name="propinsi" type="text" class="form-control" value="<?= APP_STATE; ?>" disabled>
+                  </div>
+                  <label class="col-2">Desa</label>
+                  <div class="col-4">
+                    <input id="desa" name="kabupaten" type="text" class="form-control" value="<?= APP_REGION; ?>" disabled>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-2">Desa</label>
+                  <div class="col-4">
+                    <input id="desa" name="dukuh" type="text" class="form-control" >
+                  </div>
+                  <label class="col-2">RW</label>
+                  <div class="col-4">
+                    <select id="select_agama" class="custom-select">
+                      <?php foreach ($dusun as $key => $row) {
+                        echo '<option value="' . $row->id_dukuh . '">' . $row->dukuh . '</option>';
+                      } ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-2">RW</label>
+                  <div class="col-4">
+                    <select id="select_jk" class="custom-select">
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                  </div>
+                  <label class="col-2">RT</label>
+                  <div class="col-4">
+                    <select id="select_jk" class="custom-select">
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+              <div class="modal-footer">
+                <input type="submit" name="button_action" id="button_action" class="btn btn-info" value="Simpan" />
+              </div>
+            </form>
+          </div>
       <div class="card-body">
         <table class="table table-sm table-bordered table-striped">
           <thead>
             <tr>
               <th width="25">No</th>
-              <th>Nama Dusun</th>
-              <th>Kepala Dusun</th>
-              <th width="30">Aksi</th>
-              <th></th>
+              <th>Periode</th>
+              <th>Kepala KK</th>
+              <th>Nama</th>
+              <th>Hubungan</th>
+              <th>Jenis Kelamin</th>
+              <th>T.T.L</th>
+              <th>Alamat</th>
+              <th>Pendidikan</th>
+              <th>Pekerjaan</th>
             </tr>
           </thead>
           <tbody>
